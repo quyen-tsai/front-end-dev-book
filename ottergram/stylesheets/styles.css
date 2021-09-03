@@ -113,6 +113,10 @@ a{
 }
 
 .detail-image-title {
+    position: absolute;
+    bottom: -16px;
+    left: 4px;
+
     font-family: airstreamregular;
 
     color: white;
