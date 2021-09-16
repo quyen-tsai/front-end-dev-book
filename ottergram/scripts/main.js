@@ -5,6 +5,8 @@ var THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
 var HIDDEN_DETAIL_CLASS = 'hidden-detail';
 var TINY_EFFECT_CLASS = 'is-tiny';
 var ESC_KEY = "Escape";
+var temp_arr = getThumbnailsArray();
+var i = 0;
 
 function setDetails(imageUrl, titleText) {
     'use strict';
@@ -39,6 +41,7 @@ function setDetails(imageUrl, titleText) {
    setDetailsFromThumb(thumb);
    showDetails();
    });
+  
   }
 
   function getThumbnailsArray() {
@@ -54,6 +57,9 @@ function setDetails(imageUrl, titleText) {
     var thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
     addKeyPressHandler();
+    next(thumbnails);
+    prev(thumbnails);
+  
    }
    
    function hideDetails() {
@@ -84,6 +90,47 @@ function setDetails(imageUrl, titleText) {
     });
    }
    
+   function next(thumb)
+   {
+    'use strict';
+    var next = document.querySelector(".button-next");
+    iterifyArr(thumb);
+    next.addEventListener('click', function(event)
+    { 
+      
+      event.preventDefault();
+      var temp = thumb.next();
+      setDetailsFromThumb(temp);
+      showDetails();
+    });
+    
+
+   }
+
+
+   function prev(thumb)
+   {
+    'use strict';
+    var prevs = document.querySelector(".button-prev");
+    iterifyArr(thumb);
+    prevs.addEventListener('click', function(event)
+    {
+      event.preventDefault();
+      var temp = thumb.prev();
+      setDetailsFromThumb(temp);
+      showDetails();
+    });
+    
+
+   }
+
+   var iterifyArr = function (arr) {
+    var cur = 0;
+    arr.next = (function () { return (++cur >= this.length) ? (this[cur = 0]) : this[cur]; });
+    arr.prev = (function () { return (--cur < 0) ? this[cur = this.length - 1] : this[cur]; });
+    return arr;
+};
+
 
    initializeEvents();
 

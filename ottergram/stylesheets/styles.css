@@ -127,6 +127,8 @@ a {
 
 .detail-image {
     width: 90%;
+    border-right: 10px;
+    border-left: 10px;
 }
 
 .detail-image-title {
@@ -153,6 +155,26 @@ a {
     max-width: 80%;
    }
 
+
+
+.button-next{
+    position: relative;
+    bottom: -15px;
+    right: -89%;
+    font-size: 25px;
+    color: white;
+    height: 5px;
+}
+
+.button-prev{
+    position: relative;
+    bottom: -13px;
+    left:1px;
+    font-size: 25px;
+    color:white;
+    height: 5px;
+}
+
 @media all and (min-width: 768px) {
     /* Styles will go here */
     .main-content{
@@ -171,4 +193,5 @@ a {
     .thumbnail-item + .thumbnail-item {
             margin-top: 20px;
         }
+    
    }
